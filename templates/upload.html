@@ -1,0 +1,33 @@
+{% extends "dashboardBase.html" %}
+
+{% block title%} Upload {% endblock %}
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">{% endblock %}
+
+{% block pageName %} UPLOAD {% endblock %}
+
+{% block main %}
+    <!------------------     Form    ------------------>
+    <h3>Patient Information</h3>
+
+    <form method="POST" action="/add" enctype= "multipart/form-data">
+        <ul>
+            <li>
+                <p>FIRST NAME:</p>
+                <p><input type="text" name="firstName"></p> 
+            </li>
+            <li>
+                <p>LAST NAME:</p>
+                <p><input type="text" name="lastName"></p> 
+            </li>
+            <li>
+                <p>NOTES:</p>
+                <p><input style="width: 30%;" type="text" name="notes"></p> 
+            </li>
+        </ul>   
+     
+        <input type="file" name ="imgFile">
+
+        <!------------------     Submit    ------------------>
+        <input id="submit" type="submit" value="SUBMIT">           
+    </form>
+{% endblock %}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!------------------     Title    ------------------>
+        <title>{% block title %} {% endblock %}</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <!------------------     Style-Sheet    ------------------>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboardBase.css') }}">
+        {% block style %} {% endblock %}
+
+        <!------------------     Font-Awesome    ------------------>
+        <script src="https://kit.fontawesome.com/83715fa62b.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!------------------     Side-Nav    ------------------>
+        <aside>
+            <!------------------     Logo    ------------------>
+            <img src="../static/images/logo.svg" alt="logo icon">
+
+            <!------------------     Menu    ------------------>
+            <h5>CORE FEATURES</h5>
+
+            <nav>
+                <ul>
+                    <li>
+                        <a href="home">
+                            <span><i class="fas fa-home"></i></span>
+                            <span>HOME</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="upload">
+                            <span><i class="fas fa-cloud-upload-alt"></i></span>
+                            <span>UPLOAD</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logout">
+                            <span><i class="fas fa-sign-out-alt"></i></span>
+                            <span>LOGOUT</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>     
+        </aside>
+
+        <!------------------     Top-Nav    ------------------>
+        <header>    
+            <nav>
+                <ul>
+                    <li>
+                        DASHBOARD  >  <a href="#">{% block pageName %} {% endblock %}</a>
+                    </li>
+                    <li style="margin-left: 50%;">
+                        Welcome, KYMANI
+                    </li>
+                    <li style="margin-left: 2%;">
+                        <span> K </span>
+                    </li>
+                </ul> 
+            </nav>       
+        </header>
+
+        <!------------------    Main-Content    ------------------>      
+        <main>
+            {% block main %} {% endblock %}
+        </main>
+    </body>
+</html>
