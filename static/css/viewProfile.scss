@@ -1,0 +1,30 @@
+@import "dashboardBase.scss"; 
+
+main{
+    h3{
+        font-weight: 700;
+        font-size: map-get($size-text, lrg);
+        color: map-get($colors-text, primary);   
+    }
+
+    table{
+        width: 100%;
+        tr{
+            text-align: left;
+           
+            th{
+                font-weight: 700;
+                font-size: map-get($size-text, sml);
+                padding: $padding-sm;
+                background-color: map-get($colors-background, table-head);
+            }
+    
+            td{
+                font-weight: 400;
+                font-size: map-get($size-text, sml);
+                padding: $padding-sm;
+                background-color: map-get($colors-background, secondary);
+            }
+        }
+    }
+}
