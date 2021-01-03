@@ -7,8 +7,7 @@
 
 {% block main %}
     <!------------------     Table    ------------------>
-    <h3>{{ lastName }}, {{ firstName }}</h3>
-    
+    <h3>{{ patient.lastName }}, {{ patient.firstName }}</h3>
+    <img src="{{ url_for('file', fileName=patient['fileName'])}}" alt="patient image" style="width:500px;height:450px;">
    
-    {% endif %}
 {% endblock %}

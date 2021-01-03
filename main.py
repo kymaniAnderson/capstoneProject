@@ -1,11 +1,12 @@
 from flask import Flask, redirect, url_for, render_template, request
 from flask_pymongo import PyMongo
+from private import keys
 import datetime
 
 app = Flask(__name__)
 
 #MongoDB Setup
-app.config["MONGO_URI"] = "mongodb+srv://admin:tO8BeqQEFzWvT9x7@cluster0.41j7h.mongodb.net/pcaso-db?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://admin:"+keys["pw"]+"@cluster0.41j7h.mongodb.net/"+keys["nm"]+"?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 #Configuring Collection Name as patients
@@ -57,11 +58,17 @@ def addPatient():
 def logout():
     return redirect(url_for("home"))
 
-# View Profile
-#todo: add actual html for profile and return all data
-@app.route("/profile/<fileName>")
-def profile(fileName):
+# Render Image
+@app.route("/file/<fileName>")
+def file(fileName):
     return mongo.send_file(fileName)
+
+# View Profile
+#todo: fix actual html for profile and return all data
+@app.route("/profile/<firstName>", methods=["GET"])
+def profile(firstName):
+    patient = mongo.db.patients.find_one_or_404({"firstName" : firstName})
+    return render_template("viewProfile.html", patient = patient)
 
 
 # Main
