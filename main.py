@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request
 from flask_pymongo import PyMongo
-from private import keys
+from keys import keys
 import datetime
 
 app = Flask(__name__)
