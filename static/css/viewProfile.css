@@ -106,6 +106,17 @@ main h3 {
   font-size: 22px;
 }
 
+main h5 {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+main img {
+  height: 250px;
+  width: 250px;
+  padding: 20px 0;
+}
+
 main table {
   width: 100%;
 }

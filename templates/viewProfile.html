@@ -6,8 +6,29 @@
 {% block pageName %} PROFILE {% endblock %}
 
 {% block main %}
-    <!------------------     Table    ------------------>
-    <h3>{{ patient.lastName }}, {{ patient.firstName }}</h3>
-    <img src="{{ url_for('file', fileName=patient['fileName'])}}" alt="patient image" style="width:500px;height:450px;">
+    <h3>Patient Profile</h3>
+
+    <!------------------     Title    ------------------>
+    <h5>{{ patient.lastName.upper() }}, {{ patient.firstName }}</h5>
+    <h5>{{ patient.date }}</h5> 
+  
+     <!------------------     Image    ------------------>
+    <img src="{{ url_for('file', fileName=patient['fileName'])}}" alt="patient image">
    
+    <!------------------     Table    ------------------>
+    <table>
+        <tr>
+            <th>Notes</th>
+            <th>Actions</th>
+        </tr>
+
+        <tr>
+            <td>{{ patient.notes }}</td>
+            <td>
+                <a href="update">Update</a>
+                <a href="delete">Delete</a>
+            </td>
+        </tr>
+    </table> 
+
 {% endblock %}

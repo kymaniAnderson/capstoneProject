@@ -6,6 +6,18 @@ main{
         font-size: map-get($size-text, lrg);
         color: map-get($colors-text, primary);   
     }
+    
+    h5{
+        font-weight: 500;
+        font-size: map-get($size-text, med);
+        color: map-get($colors-text, primary);   
+    }
+
+    img{
+        height: 250px;
+        width: 250px;
+        padding: $padding-md 0;
+    }
 
     table{
         width: 100%;
