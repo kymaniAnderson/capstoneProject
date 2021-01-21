@@ -11,6 +11,7 @@
     <!------------------     Title    ------------------>
     <h5>{{ patient.lastName.upper() }}, {{ patient.firstName }}</h5>
     <h5>{{ patient.date }}</h5> 
+    <h5>Age: {{ patient.age }}</h5> 
   
      <!------------------     Image    ------------------>
     <img src="{{ url_for('file', fileName=patient['fileName'])}}" alt="patient image">
@@ -25,8 +26,8 @@
         <tr>
             <td>{{ patient.notes }}</td>
             <td>
-                <a href="update">Update</a>
-                <a href="delete">Delete</a>
+                <a href="update%{{ patient.firstName }}">Update</a>
+                <a href="delete%{{ patient.firstName }}">Delete</a>
             </td>
         </tr>
     </table> 

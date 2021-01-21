@@ -43,6 +43,7 @@ def addPatient():
         patientData = {
             "firstName" : request.form.get("firstName"),
             "lastName" : request.form.get("lastName"), 
+            "age" : request.form.get("age"), 
             "notes" : request.form.get('notes'),
             "fileName" : imgFile.filename,
             "date" : dte.strftime("%x")
@@ -65,12 +66,44 @@ def file(fileName):
 
 # View Profile
 #todo: fix actual html for profile and return all data
-@app.route("/profile/<firstName>", methods=["GET"])
+@app.route("/profile%<path:firstName>", methods=["GET"])
 def profile(firstName):
     patient = mongo.db.patients.find_one_or_404({"firstName" : firstName})
     return render_template("viewProfile.html", patient = patient)
 
+# Update 
+#todo create the web template
+@app.route("/update%<path:firstName>", methods=["GET", "POST"])
+def update():
+    # update code
+    # db_operations.update_one(filt, updated_user)
+    return render_template("update.html")
+
+# Delete
+#todo create the web template
+@app.route("/delete%<path:firstName>")
+def delete(firstName):
+    # update code
+    db_operations.delete_one({"firstName" : firstName})
+    return redirect(url_for("home"))
 
 # Main
 if __name__ == '__main__':
    app.run(debug = True)
+
+
+# @app.route('/update/<int:id>', methods = ['GET', 'POST'])
+# def update(id):
+#     comment = Todo.query.get_or_404(id)
+
+#     if request.method == 'POST':
+#         comment.content = request.form['content']
+
+#         try:
+#             db.session.commit()
+#             return redirect('/')
+#         except:
+#             return 'Problem updating comment.'
+
+#     else:
+#         return render_template('update.html', comment = comment)

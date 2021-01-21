@@ -1,9 +1,9 @@
 {% extends "dashboardBase.html" %}
 
 {% block title%} Upload {% endblock %}
-{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">{% endblock %}
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='css/update.css') }}">{% endblock %}
 
-{% block pageName %} UPLOAD {% endblock %}
+{% block pageName %} UPDATE {% endblock %}
 
 {% block main %}
     <!------------------     Form    ------------------>
@@ -18,10 +18,6 @@
             <li>
                 <p>LAST NAME:</p>
                 <p><input type="text" name="lastName"></p> 
-            </li>
-            <li>
-                <p>AGE:</p>
-                <p><input type="number" name="age"></p> 
             </li>
             <li>
                 <p>NOTES:</p>
