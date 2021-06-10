@@ -1,58 +1,109 @@
-{% extends "indexBase.html" %}
-{% block title %} User Login {% endblock %}
-{% block content %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <!------------------     Title    ------------------>
+        <title>Home</title>
+        <link rel = "icon" href = "/client/static/images/logo-plain.svg" type = "image/x-icon"> 
 
-<div class="right">
-  <!------------------     Logo    ------------------>
-  <img src="../static/images/logo-sid.svg" alt="logo icon">
-
-</div>
-
-<div class="left">
-  <!------------------     Login Form    ------------------>
-  <h2>Login</h2>
-
-  <div class="form">
-    <form action="/home" enctype= "multipart/form-data">
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" name="email"> 
-        </div>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password"> 
-        </div>
-        <div class="form-action">
-          <input id="submit" type="submit" value="LOGIN">   
-        </div>
-    </form>
-  </div>
+        <!------------------     Style-Sheet    ------------------>
+        <link rel="stylesheet" href="/client/static/css/index.css">
 
-  <!------------------     Signup Form    ------------------>
-  <h2>Create Account</h2>
+        <!------------------     Font-Awesome    ------------------>
+        <script src="https://kit.fontawesome.com/83715fa62b.js" crossorigin="anonymous"></script>
+    </head>
 
-  <div class="form">
-    <form action="/home" enctype= "multipart/form-data">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" name="name"> 
-      </div>
+    <body>
+        <!------------------     Side-Nav    ------------------>
+        <aside>
+            <!------------------     Logo    ------------------>
+            <img src="../static/images/logo.svg" alt="logo icon">
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" name="email"> 
-        </div>
-        
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password"> 
-        </div>
-        <div class="form-action">
-          <input id="submit" type="submit" value="SIGN UP">   
-        </div>
-    </form>
-  </div>
-</div>
+            <!------------------     Menu    ------------------>
+            <h5>CORE FEATURES</h5>
 
-{% endblock %}
+            <nav>
+                <ul>
+                    <li class="active-btn">
+                        <a href="#">
+                            <span><i class="fas fa-home"></i></span>
+                            <span>HOME</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span><i class="fas fa-chart-area"></i></span>
+                            <span>CHARTS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span><i class="fas fa-user-plus"></i></span>
+                            <span>ADD PATIENT</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span><i class="fas fa-folder-plus"></i></span>
+                            <span>ADD RECORD</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>     
+        </aside>
+
+        <!------------------     Top-Nav    ------------------>
+        <header>    
+            <nav>
+                <ul>
+                    <li class="list-left">
+                        <span>HOME</span>
+                    </li>
+
+                    <li class="list-right">
+                        <span> Welcome, <b>USER</b> </span>
+                        <span class="user-icon">U</span>
+                    </li>
+                </ul> 
+            </nav>       
+        </header>
+
+        <!------------------    Main Content    ------------------> 
+        <main>
+            <!------------------    Table    ------------------> 
+            <div class="main" id="blur">
+                <h3 class="table-title">Patients</h3>    
+                <table id="patientTable"> </table>
+            </div>
+
+            <!------------------     Form    ------------------>
+            <div class="popup-form" id="popup">
+                 <a class="back-btn" id="back">
+                    <i class="fas fa-arrow-left"></i><br><br>
+                </a>
+                    
+                <form>
+                    <label for="patientID">Patient ID:</label><br>
+                    <input type="text" id="patientID" name="patientID"><br><br>
+
+                    <label for="firstName">First Name:</label><br>
+                    <input type="text" id="firstName" name="firstName"><br><br>
+
+                    <label for="lastName">Last Name:</label><br>
+                    <input type="text" id="lastName" name="lastName"><br><br>
+
+                    <label for="patientAge">Age:</label><br>
+                    <input type="number" id="patientAge" name="patientAge"><br><br>
+
+                    <input type="submit" id="submit" value="Submit">
+                </form>
+            </div>
+        </main>
+
+        <!------------------     Javascript    ------------------>
+        <script type="text/javascript" src="/client/scripts/addTableData.js"></script> 
+    </body>
+</html>

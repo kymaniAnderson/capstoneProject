@@ -19,17 +19,18 @@ class PatientSchema(Schema):
     firstName = fields.String(required=True)
     lastName = fields.String(required=True)
     patientAge = fields.Integer(required=True)
-    patientNotes = fields.String(required=True)
     patientID = fields.String(required=True)
 
 # TO-DO: 
 # ADD: auto generate an ID
-# ADD: model % prediction here
+# ADD: model % prediction here, remove manual add of isupGrade
 class RecordSchema(Schema):
     imageLink = fields.String(required=True)
     lastUpdated = fields.String(required=True)
+    patientNotes = fields.String(required=True)
+    isupGrade = fields.Integer(required=True)
     patientID = fields.String(required=True)
-
+    
 # ROUTE 1:
 @app.route('/api/patient', methods=["GET", "POST"])
 def allPatients():
@@ -39,14 +40,12 @@ def allPatients():
             firstName = request.json["firstName"]
             lastName = request.json["lastName"]
             patientAge = request.json["patientAge"]
-            patientNotes = request.json["patientNotes"]
             patientID = request.json["patientID"]
 
             jsonBody = {
                 "firstName": firstName,
                 "lastName": lastName,
                 "patientAge": patientAge,
-                "patientNotes": patientNotes,
                 "patientID": patientID
             }
 
@@ -108,10 +107,14 @@ def allRecords():
             
             lastUpdated = datetime.now().strftime("%c")
             patientID = request.json["patientID"]
+            patientNotes = request.json["patientNotes"]
+            isupGrade = request.json["isupGrade"]
 
             jsonBody = {
                 "imageLink": imageLink,
                 "lastUpdated": lastUpdated,
+                "patientNotes": patientNotes,
+                "isupGrade": isupGrade,
                 "patientID": patientID
             }
 
@@ -140,4 +143,4 @@ def file(fileName):
 
 # Main
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.100.77", port=5000)
+    app.run(debug=True, host="192.168.100.74", port=5000)

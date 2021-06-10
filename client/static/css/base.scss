@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
-$padding-md: 20px;
-$padding-sm: 10px;
-$padding-mn: 5px;
+$padding-lrg: 20px;
+$padding-med: 10px;
+$padding-sml: 5px;
 
-$borders-md: 15px;
-$borders-sm: 10px;
+$border-lrg: 20px;
+$border-med: 15px;
+$borders-sml: 10px;
+
+$margin-lrg: 50px;
+$margin-med: 25px;
+$margin-sml: 5px;
 
 $colors-text: (
     norm-primary: #000000D9,
@@ -53,13 +58,13 @@ body{
 aside{
     grid-area: sidebar;
     background-color: map-get($colors-background, secondary);
-    padding: $padding-md;
+    padding: $padding-lrg;
     border-right: 1px solid #00000040;
 
     h5{
         font-weight: 700;
         font-size: map-get($size-text, sml);
-        padding-top: 12px;
+        padding-top: $padding-med;
         color: map-get($colors-text, norm-primary); 
     }
     
@@ -69,9 +74,9 @@ aside{
             
             li{
                 list-style: none;
-                padding: $padding-md 0;
+                padding: $padding-lrg 0;
             }
-        
+
             li a{
                 font-weight: 700;
                 font-size: map-get($size-text, med);
@@ -94,40 +99,39 @@ header{
     border-bottom: 1px solid #00000040;
 
     ul{
-        padding-left: 20px;
-        padding-right: 20px;
+        margin: $margin-sml;
+        padding: $padding-lrg;
+        list-style-type: none;
+        overflow: hidden;
 
-        display: flex;
-        justify-content:space-between; 
+        .list-left{
+            float: left;
+            padding-top: auto;
+            padding-top: $padding-sml;
+        }
 
-        li{
-            list-style: none;
-            display: inline;
+        .list-right{
+            float: right;
+            padding-top: auto;
+            padding-top: $padding-sml;
+        }
+    
+        .user-icon{
+            padding-right: $padding-sml;
+            padding-left: $padding-sml;
+            border-radius: 5px;
+            background-color: map-get($colors-background, acc-main);
+                    
             font-weight: 700;
-            font-size: map-get($size-text, sml);
-
-            a{
-                text-decoration: none;             
-                color: map-get($colors-text, link-primary);
-            }
-
-            span{
-                border: 1px solid map-get($colors-background, acc-main);
-                border-radius: 5px;
-                padding: $padding-mn $padding-sm;
-                background-color: map-get($colors-background, acc-main);
-                
-                font-weight: 700;
-                font-size: map-get($size-text, med);
-                color: map-get($colors-text, norm-secondary);
-            }
+            font-size: map-get($size-text, med);
+            color: map-get($colors-text, norm-secondary);
         }
     }
 }
 
-/*          Main-TableContent           */
+/*********************** Main ***********************/
 main{
     grid-area: main;
     background-color: map-get($colors-background, primary);
-    padding: $padding-mn $padding-md;
+    padding: $padding-sml $padding-lrg;
 }
