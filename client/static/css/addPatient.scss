@@ -7,28 +7,8 @@ main{
         color: map-get($colors-text, primary);   
     }
 
-    table{
-        width: 100%;
-
-        .head-row {
-            font-weight: 700;
-            font-size: map-get($size-text, sml);
-            padding: $padding-sml;
-            background-color: map-get($colors-background, table-head);
-        }
-
-        tr{
-            text-align: left;    
-            td{
-                font-weight: 400;
-                font-size: map-get($size-text, sml);
-                padding: $padding-sml;
-                background-color: map-get($colors-background, secondary);
-            }
-        }
-    }
     /*********************** Form ***********************/
-    .popup-form{
+    .form{
         position: fixed;
         top: 40%;
         left: 50%;
@@ -39,22 +19,13 @@ main{
         font-weight: 600;
         background-color: map-get($colors-background, secondary);
         box-shadow: 0px 6px 18px 0px #000000D9;
-        display: hidden;
-        opacity: 0;
-        transition: 0.5s;
-
-        .back-btn{
-            cursor: pointer;
-            font-weight: 700;
-            font-size: map-get($size-text, lrg);
-        }
         
         form{
             input:not(:last-child){
                 width: 75%;
             }
 
-            #submit{
+            #patient-submit{
                 height: 35px;
                 width: 85px;
                 border: none;
@@ -72,19 +43,6 @@ main{
                 float: right;
             }
         }
-    }
-
-    .popup-form#popup.active{
-        top: 50%;
-        visibility: visible;
-        opacity: 1;
-        transition: 0.5s;
-    }
-
-    .main#blur.active{
-        filter: blur(20px);
-        pointer-events: none;
-        user-select: none;
     }
 }
 

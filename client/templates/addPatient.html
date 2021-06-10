@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!------------------     Title    ------------------>
+        <title>Add Patient</title>
+        <link rel = "icon" href = "/client/static/images/logo-plain.svg" type = "image/x-icon"> 
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <!------------------     Style-Sheet    ------------------>
+        <link rel="stylesheet" href="/client/static/css/addPatient.css">
+
+        <!------------------     Font-Awesome    ------------------>
+        <script src="https://kit.fontawesome.com/83715fa62b.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!------------------     Side-Nav    ------------------>
+        <aside>
+            <!------------------     Logo    ------------------>
+            <img src="../static/images/logo.svg" alt="logo icon">
+
+            <!------------------     Menu    ------------------>
+            <h5>CORE FEATURES</h5>
+
+            <nav>
+                <ul>
+                    <li class="active-btn">
+                        <a href="index.html">
+                            <span><i class="fas fa-home"></i></span>
+                            <span>HOME</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="charts.html">
+                            <span><i class="fas fa-chart-area"></i></span>
+                            <span>CHARTS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="addPatient.html">
+                            <span><i class="fas fa-user-plus"></i></span>
+                            <span>ADD PATIENT</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="addRecord.html">
+                            <span><i class="fas fa-folder-plus"></i></span>
+                            <span>ADD RECORD</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>     
+        </aside>
+
+        <!------------------     Top-Nav    ------------------>
+        <header>    
+            <nav>
+                <ul>
+                    <li class="list-left">
+                        <span>ADD PATIENT</span>
+                    </li>
+
+                    <li class="list-right">
+                        <span> Welcome, <b>USER</b> </span>
+                        <span class="user-icon">U</span>
+                    </li>
+                </ul> 
+            </nav>       
+        </header>
+
+        <!------------------    Main Content    ------------------> 
+        <main>
+            <!------------------     Form    ------------------>
+            <h3>Patient Form</h3>
+            
+            <div class="form" id="popup-form">
+                <form>
+                    <label for="patientID">Patient ID:</label><br>
+                    <input type="text" id="patientID" name="patientID"><br><br>
+
+                    <label for="firstName">First Name:</label><br>
+                    <input type="text" id="firstName" name="firstName"><br><br>
+
+                    <label for="lastName">Last Name:</label><br>
+                    <input type="text" id="lastName" name="lastName"><br><br>
+
+                    <label for="patientAge">Age:</label><br>
+                    <input type="number" id="patientAge" name="patientAge"><br><br>
+
+                    <input type="submit" value="Submit" id="patient-submit">
+                </form>
+            </div>
+        </main>
+
+        <!------------------     Javascript    ------------------>
+        <script type="text/javascript" src="/client/scripts/addPatient.js"></script> 
+    </body>
+</html>

@@ -113,29 +113,7 @@ main h3 {
   font-size: 22px;
 }
 
-main table {
-  width: 100%;
-}
-
-main table .head-row {
-  font-weight: 700;
-  font-size: 13px;
-  padding: 5px;
-  background-color: #F8F9FA;
-}
-
-main table tr {
-  text-align: left;
-}
-
-main table tr td {
-  font-weight: 400;
-  font-size: 13px;
-  padding: 5px;
-  background-color: #FFFFFF;
-}
-
-main .popup-form {
+main .form {
   position: fixed;
   top: 40%;
   left: 50%;
@@ -148,23 +126,13 @@ main .popup-form {
   background-color: #FFFFFF;
   -webkit-box-shadow: 0px 6px 18px 0px #000000D9;
           box-shadow: 0px 6px 18px 0px #000000D9;
-  display: hidden;
-  opacity: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
 }
 
-main .popup-form .back-btn {
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 22px;
-}
-
-main .popup-form form input:not(:last-child) {
+main .form form input:not(:last-child) {
   width: 75%;
 }
 
-main .popup-form form #submit {
+main .form form #patient-submit {
   height: 35px;
   width: 85px;
   border: none;
@@ -179,22 +147,4 @@ main .popup-form form #submit {
   text-align: center;
   float: right;
 }
-
-main .popup-form#popup.active {
-  top: 50%;
-  visibility: visible;
-  opacity: 1;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-main .main#blur.active {
-  -webkit-filter: blur(20px);
-          filter: blur(20px);
-  pointer-events: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=addPatient.css.map */
