@@ -111,6 +111,7 @@ main {
 main h3 {
   font-weight: 700;
   font-size: 22px;
+  color: #000000D9;
 }
 
 main table {
@@ -133,6 +134,14 @@ main table tr td {
   font-size: 13px;
   padding: 5px;
   background-color: #FFFFFF;
+}
+
+main table i {
+  padding-right: 20px;
+}
+
+main table i:hover {
+  color: #3AAFA9BF;
 }
 
 main .popup-form {

@@ -2,6 +2,7 @@
 var connectionURL = "http://192.168.100.77:5000"
 
 window.onload = function() { 
+    sessionStorage.clear();
     drawTableBody();
 };
 
@@ -50,19 +51,23 @@ function addTableBody(patient){
     lastNameContent.innerHTML = patient.lastName;
     patientAgeContent.innerHTML = patient.patientAge;  
 
-    //EDIT:
-    var editButton = document.createElement("BUTTON");
-    editButton.classList.add("btn");
-    editButton.innerHTML = "EDIT";
+    // EDIT:
+    var editButton = document.createElement("I");
+    editButton.classList.add("fas", "fa-edit");
     editButton.setAttribute("onclick", "toggleForm('".concat(patient.patientID).concat("')"));
     actionsContent.append(editButton);
 
-    //DELETE
-    var deleteButton = document.createElement("BUTTON");
-    deleteButton.classList.add("btn");
-    deleteButton.innerHTML = "DELETE";
+    // DELETE:
+    var deleteButton = document.createElement("I");
+    deleteButton.classList.add("fas", "fa-trash"); 
     deleteButton.setAttribute("onclick", "delFunc('".concat(patient.patientID).concat("')"));
     actionsContent.append(deleteButton);
+
+    // PROFILE:
+    var profileButton = document.createElement("I");
+    profileButton.classList.add("fas", "fa-eye");
+    profileButton.setAttribute("onclick", "viewProfile('".concat(patient.patientID).concat("')"));
+    actionsContent.append(profileButton);
 }
 
 function toggleForm(patientID){
@@ -122,7 +127,7 @@ document.getElementById("submit").addEventListener("click", function(event){
     if (patientID !== "") jsonBody["patientID"] = patientID;
     if (firstName !== "") jsonBody["firstName"] = firstName;
     if (lastName !== "") jsonBody["lastName"] = lastName;
-    if (patientAge !== "") jsonBody["patientAge"] = age;
+    if (patientAge !== "") jsonBody["patientAge"] = patientAge;
 
     var id = document.getElementById("submit").className;
 
@@ -139,3 +144,8 @@ document.getElementById("submit").addEventListener("click", function(event){
 
     toggleForm("123");
 });
+
+function viewProfile(id){
+    sessionStorage.setItem("patientID", id);
+    window.location = ("viewProfile.html");
+}

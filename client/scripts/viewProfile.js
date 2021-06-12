@@ -96,7 +96,7 @@ async function createPageContent(id){
     firstNameID = document.getElementById("firstName");
     patientAgeID = document.getElementById("patientAge");
 
-    lastNameID.innerHTML = patient.lastName;
+    lastNameID.innerHTML = patient.lastName.toUpperCase();
     firstNameID.innerHTML = patient.firstName;
     patientAgeID.innerHTML = patient.patientAge;
 
@@ -109,6 +109,6 @@ async function createPageContent(id){
 }
 
 window.onload = function() {
-    id = "88.88.88";
+    id = sessionStorage.getItem("patientID");
     createPageContent(id);
 };
