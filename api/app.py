@@ -1,18 +1,32 @@
 from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
 from marshmallow import Schema, fields, ValidationError
+from flask_mail import Mail, Message
 from bson.json_util import dumps
 from flask_cors import CORS
 from json import loads
 from datetime import datetime
 from werkzeug.datastructures import ImmutableMultiDict
 import json
+from decouple import config
 
 app = Flask(__name__)
 CORS(app)
 
-app.config["MONGO_URI"] = "mongodb+srv://admin:DCcnOr247jWxC4Y4@cluster0.41j7h.mongodb.net/pcaso-db?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://admin:"+config("db-pw", default="")+"@cluster0.41j7h.mongodb.net/"+config("db-name", default="")+"?retryWrites=true&w=majority"
 mongo = PyMongo(app)
+
+mail_settings = {
+    "MAIL_SERVER": 'smtp.gmail.com',
+    "MAIL_PORT": 465,
+    "MAIL_USE_TLS": False,
+    "MAIL_USE_SSL": True,
+    "MAIL_USERNAME": config("email-name", default=""),
+    "MAIL_PASSWORD": config("email-pw", default="") 
+}
+
+app.config.update(mail_settings)
+mail = Mail(app)
 
 db_patients = mongo.db.patients
 db_records = mongo.db.records
@@ -110,18 +124,26 @@ def allRecords():
                 mongo.save_file(imageLink, imgFile)
 
             lastUpdated = datetime.now().strftime("%c")
-            patientID = data.getlist("patientID")
-            patientNotes =  data.getlist("patientNotes")
-            isupGrade =   data.getlist("isupGrade")
+            patientID = data.getlist("patientID").pop()
+            patientNotes =  data.getlist("patientNotes").pop()
+            isupGrade = int(data.getlist("isupGrade").pop())
 
             jsonBody = {
                 "imageLink": imageLink,
                 "lastUpdated": lastUpdated,
-                "patientNotes": patientNotes.pop(),
-                "isupGrade": isupGrade.pop(),
-                "patientID": patientID.pop()
+                "patientNotes": patientNotes,
+                "isupGrade": isupGrade,
+                "patientID": patientID
             }
             
+            if isupGrade > 3:
+                with app.app_context():
+                    msg = Message(subject="Alert: Cancerous Cell Detected",
+                                sender=app.config.get("MAIL_USERNAME"),
+                                recipients=["kymani.anderson@mymona.uwi.edu"],
+                                body="The cell uploaded is cancerous!")
+                    mail.send(msg)
+
             newRecord = RecordSchema().load(jsonBody)
             db_records.insert_one(newRecord)
 

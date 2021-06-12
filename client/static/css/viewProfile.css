@@ -142,9 +142,9 @@ main .container {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 main .container .card-body {
@@ -153,6 +153,7 @@ main .container .card-body {
   overflow: hidden;
   height: 256px;
   width: 475px;
+  margin-top: 25px;
 }
 
 main .container .card-body:hover {

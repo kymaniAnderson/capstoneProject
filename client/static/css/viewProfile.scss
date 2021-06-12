@@ -33,7 +33,7 @@ main{
         padding: 0;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-evenly;
 
         .card-body{
             background: map-get($colors-background , secondary);
@@ -41,6 +41,7 @@ main{
             overflow: hidden;
             height: 256px;
             width: 475px;
+            margin-top: $margin-med;
         }
 
         .card-body:hover{
