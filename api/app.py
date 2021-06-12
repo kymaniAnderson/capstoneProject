@@ -141,7 +141,7 @@ def allRecords():
         return jsonify(loads(dumps(records))), 200
 
 # Render Image
-@app.route("/file/<fileName>")
+@app.route("/file/<path:fileName>")
 def file(fileName):
     return mongo.send_file(fileName)
 
