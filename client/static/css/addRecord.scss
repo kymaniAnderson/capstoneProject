@@ -1,0 +1,48 @@
+@import "base.scss"; 
+
+main{
+    h3{
+        font-weight: 700;
+        font-size: map-get($size-text, lrg);
+        color: map-get($colors-text, primary);   
+    }
+
+    /*********************** Form ***********************/
+    .form{
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 525px;
+        border-radius: 5px;
+        padding: $padding-lrg;
+        font-weight: 600;
+        background-color: map-get($colors-background, secondary);
+        box-shadow: 0px 6px 18px 0px #000000D9;
+        
+        form{
+            input:not(:last-child){
+                width: 75%;
+            }
+
+            #record-submit{
+                height: 35px;
+                width: 85px;
+                border: none;
+                outline: 0;
+                border-radius: 5px;
+                padding: $padding-med;
+                background-color: map-get($colors-background, acc-main);
+                        
+                font-weight: 700;
+                font-size: map-get($size-text, med);
+                color: map-get($colors-text, norm-secondary);
+    
+                cursor: pointer;
+                text-align: center;
+                float: right;
+            }
+        }
+    }
+}
+

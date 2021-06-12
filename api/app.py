@@ -5,6 +5,8 @@ from bson.json_util import dumps
 from flask_cors import CORS
 from json import loads
 from datetime import datetime
+from werkzeug.datastructures import ImmutableMultiDict
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -91,33 +93,35 @@ def onePatient(id):
         # /GET
         patient = db_patients.find_one(filt)
         return  jsonify(loads(dumps(patient)))
-    
+
 # ROUTE 3:
 @app.route('/api/record', methods=["GET", "POST"])
 def allRecords():
     if request.method == "POST":
         # /POST
         try:
-            if "imgFile" in request.files:
-                imgFile = request.files["imgFile"]
+            imgFile = request.files["imgFile"]
+            data = request.values
+
+            if imgFile.filename == "":
+                imageLink = "blank-attached"
+            else:
                 imageLink = imgFile.filename
                 mongo.save_file(imageLink, imgFile)
-            else:
-                imageLink = "No image attached"
-            
+
             lastUpdated = datetime.now().strftime("%c")
-            patientID = request.json["patientID"]
-            patientNotes = request.json["patientNotes"]
-            isupGrade = request.json["isupGrade"]
+            patientID = data.getlist("patientID")
+            patientNotes =  data.getlist("patientNotes")
+            isupGrade =   data.getlist("isupGrade")
 
             jsonBody = {
                 "imageLink": imageLink,
                 "lastUpdated": lastUpdated,
-                "patientNotes": patientNotes,
-                "isupGrade": isupGrade,
-                "patientID": patientID
+                "patientNotes": patientNotes.pop(),
+                "isupGrade": isupGrade.pop(),
+                "patientID": patientID.pop()
             }
-
+            
             newRecord = RecordSchema().load(jsonBody)
             db_records.insert_one(newRecord)
 
@@ -143,4 +147,4 @@ def file(fileName):
 
 # Main
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.100.74", port=5000)
+    app.run(debug=True, host="192.168.100.77", port=5000)

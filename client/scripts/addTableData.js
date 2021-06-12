@@ -1,5 +1,5 @@
 // VARIABLE DECLARATIONS:
-var connectionURL = "http://192.168.100.74:5000"
+var connectionURL = "http://192.168.100.77:5000"
 
 window.onload = function() { 
     drawTableBody();
