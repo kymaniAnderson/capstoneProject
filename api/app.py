@@ -11,10 +11,18 @@ import json
 from decouple import config
 
 app = Flask(__name__)
-CORS(app)
 
 app.config["MONGO_URI"] = "mongodb+srv://admin:"+config("db-pw", default="")+"@cluster0.41j7h.mongodb.net/"+config("db-name", default="")+"?retryWrites=true&w=majority"
 mongo = PyMongo(app)
+
+api_config = {
+    "origins": ["http://192.168.100.77", "http://127.0.0.1:5500"],
+    "methods": ["OPTIONS", "HEAD", "GET", "POST", "PATCH", "DELETE"],
+}
+
+CORS(app, resources={
+    r"/*": api_config
+})
 
 mail_settings = {
     "MAIL_SERVER": 'smtp.gmail.com',
@@ -137,11 +145,17 @@ def allRecords():
             }
             
             if isupGrade > 3:
+                messageBody = "The cell uploaded is cancerous! Here's some further information:\n\n"
+                messageBody = messageBody + "Patient ID: " + patientID + "\n"
+                messageBody = messageBody + "ISUP Grade: " + str(isupGrade) + "\n"
+                messageBody = messageBody + "Uploaded Date: " +  lastUpdated + "\n"
+                messageBody = messageBody + "Image Link: " + imageLink 
+
                 with app.app_context():
                     msg = Message(subject="Alert: Cancerous Cell Detected",
                                 sender=app.config.get("MAIL_USERNAME"),
                                 recipients=["kymani.anderson@mymona.uwi.edu"],
-                                body="The cell uploaded is cancerous!")
+                                body= messageBody)
                     mail.send(msg)
 
             newRecord = RecordSchema().load(jsonBody)
