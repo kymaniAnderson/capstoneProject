@@ -16,7 +16,7 @@ app.config["MONGO_URI"] = "mongodb+srv://admin:"+config("db-pw", default="")+"@c
 mongo = PyMongo(app)
 
 api_config = {
-    "origins": ["http://192.168.100.77", "http://127.0.0.1:5500"],
+    "origins": ["http://192.168.100.70", "http://127.0.0.1:5500"],
     "methods": ["OPTIONS", "HEAD", "GET", "POST", "PATCH", "DELETE"],
 }
 
@@ -183,4 +183,4 @@ def file(fileName):
 
 # Main
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.100.77", port=5000)
+    app.run(debug=True, host="192.168.100.70", port=5000)
