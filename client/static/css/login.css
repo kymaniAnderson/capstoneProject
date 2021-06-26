@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+/*          General           */
+body, html {
+  height: 100vh;
+}
+
+/*          Body-Layout           */
+body {
+  font-family: 'Ubuntu';
+  margin: 50px;
+  display: -ms-grid;
+  display: grid;
+  background-color: #F1F3F5;
+}
+
+main {
+  /*********************** Form ***********************/
+}
+
+main .form {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 425px;
+  border-radius: 5px;
+  padding: 20px;
+  font-weight: 600;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0px 6px 18px 0px #000000D9;
+          box-shadow: 0px 6px 18px 0px #000000D9;
+}
+
+main .form h3 {
+  font-weight: 700;
+  font-size: 30px;
+  padding-bottom: 10px;
+  padding-left: 35%;
+  margin-top: 5px;
+}
+
+main .form input {
+  width: 65%;
+  height: 20px;
+}
+
+main .form label {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+main .form form #login-submit {
+  height: 35px;
+  width: 85px;
+  border: none;
+  outline: 0;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #F79E02;
+  font-weight: 700;
+  font-size: 18px;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-align: center;
+  float: right;
+}
+/*# sourceMappingURL=login.css.map */

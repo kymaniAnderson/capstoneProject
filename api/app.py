@@ -16,7 +16,7 @@ app.config["MONGO_URI"] = "mongodb+srv://admin:"+config("db-pw", default="")+"@c
 mongo = PyMongo(app)
 
 api_config = {
-    "origins": ["http://192.168.100.70", "http://127.0.0.1:5500"],
+    "origins": ["http://192.168.100.78", "http://127.0.0.1:5500"],
     "methods": ["OPTIONS", "HEAD", "GET", "POST", "PATCH", "DELETE"],
 }
 
@@ -36,9 +36,16 @@ mail_settings = {
 app.config.update(mail_settings)
 mail = Mail(app)
 
+db_pathologists = mongo.db.pathologists
 db_patients = mongo.db.patients
 db_records = mongo.db.records
 
+class PathologistSchema(Schema):
+    email = fields.String(required=True)
+    password = fields.String(required=True)
+
+# TO-DO: 
+# ADD: auto generate an ID
 class PatientSchema(Schema):
     firstName = fields.String(required=True)
     lastName = fields.String(required=True)
@@ -46,7 +53,6 @@ class PatientSchema(Schema):
     patientID = fields.String(required=True)
 
 # TO-DO: 
-# ADD: auto generate an ID
 # ADD: model % prediction here, remove manual add of isupGrade
 class RecordSchema(Schema):
     imageLink = fields.String(required=True)
@@ -54,7 +60,39 @@ class RecordSchema(Schema):
     patientNotes = fields.String(required=True)
     isupGrade = fields.Integer(required=True)
     patientID = fields.String(required=True)
-    
+
+# ROUTE 0:
+@app.route('/api/pathologist', methods=["GET", "POST"])
+def validatePathologist():
+    if request.method == "POST":
+        # /POST
+        try:
+            email = request.json["email"]
+            password = request.json["password"]
+
+            jsonBody = {
+                "email": email,
+                "password": password
+            }
+
+            newPathologist = PathologistSchema().load(jsonBody)
+            db_pathologists.insert_one(newPathologist)
+
+            return{
+                "sucess": True,
+                "message": "New Pathologist Added!"
+            }, 200
+
+        except ValidationError as err:
+            return {
+                "sucess": False,
+                "message": "An error occured while trying to add new pathologist"
+            }, 400
+    else:
+        # /GET
+        pathologists = db_pathologists.find()
+        return jsonify(loads(dumps(pathologists))), 200
+
 # ROUTE 1:
 @app.route('/api/patient', methods=["GET", "POST"])
 def allPatients():
@@ -154,7 +192,7 @@ def allRecords():
                 with app.app_context():
                     msg = Message(subject="Alert: Cancerous Cell Detected",
                                 sender=app.config.get("MAIL_USERNAME"),
-                                recipients=["kymani.anderson@mymona.uwi.edu"],
+                                recipients=["marayeanderson@gmail.com"],
                                 body= messageBody)
                     mail.send(msg)
 
@@ -183,4 +221,4 @@ def file(fileName):
 
 # Main
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.100.70", port=5000)
+    app.run(debug=True, host="192.168.100.78", port=5000)

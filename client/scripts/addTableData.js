@@ -1,5 +1,5 @@
 // VARIABLE DECLARATIONS:
-var connectionURL = "http://192.168.100.70:5000"
+var connectionURL = "http://192.168.100.78:5000"
 
 window.onload = function() { 
     sessionStorage.clear();

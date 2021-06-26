@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+$padding-lrg: 20px;
+$padding-med: 10px;
+$padding-sml: 5px;
+
+$border-lrg: 20px;
+$border-med: 15px;
+$borders-sml: 10px;
+
+$margin-lrg: 50px;
+$margin-med: 25px;
+$margin-sml: 5px;
+
+$colors-text: (
+    norm-primary: #000000D9,
+    norm-secondary: #FFFFFF,
+    link-primary: #3AAFA9BF,
+    link-secondary: #1667DF,
+    cat-accent1: #F92626,
+    cat-accent2: #DFD939,
+    cat-accent3: #F79E02,
+    cat-accent4: #098E87   
+);
+
+$colors-background: (
+    primary: #F1F3F5,
+    secondary: #FFFFFF,
+    acc-main: #3AAFA9,
+    table-head: #F8F9FA
+);
+
+$size-text: (
+    ext-lrg: 30px,
+    med: 18px
+);
+
+/*          General           */
+body, html{
+    height: 100vh;
+}
+
+/*          Body-Layout           */
+body{
+    font-family: 'Ubuntu';
+    margin: $margin-lrg;
+    display: grid;
+    background-color: map-get($colors-background, primary);
+}
+main{
+    /*********************** Form ***********************/
+    .form{
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 425px;
+        border-radius: 5px;
+        padding: $padding-lrg;
+        font-weight: 600;
+        background-color: map-get($colors-background, secondary);
+        box-shadow: 0px 6px 18px 0px #000000D9;
+
+        h3{
+            font-weight: 700;
+            font-size: map-get($size-text, ext-lrg);
+            color: map-get($colors-text, primary);   
+            padding-bottom: $padding-med;
+            padding-left: 35%;
+            margin-top: $margin-sml;
+        }
+
+        input{
+            width: 65%;
+            height: 20px;
+        }
+
+        label{
+            font-weight: 500;
+            font-size: map-get($size-text, med);
+        }
+
+        form{  
+            #login-submit{
+                height: 35px;
+                width: 85px;
+                border: none;
+                outline: 0;
+                border-radius: 5px;
+                padding: $padding-med;
+                background-color: map-get($colors-text, cat-accent3);
+                        
+                font-weight: 700;
+                font-size: map-get($size-text, med);
+                color: map-get($colors-text, norm-secondary);
+    
+                cursor: pointer;
+                text-align: center;
+                float: right;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!------------------     Title    ------------------>
+        <title>Login</title>
+        <link rel = "icon" href = "/client/static/images/logo-plain.svg" type = "image/x-icon"> 
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <!------------------     Style-Sheet    ------------------>
+        <link rel="stylesheet" href="/client/static/css/login.css">
+
+        <!------------------     Font-Awesome    ------------------>
+        <script src="https://kit.fontawesome.com/83715fa62b.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!------------------    Main Content    ------------------> 
+        <main>
+            <!------------------     Logo    ------------------>   
+            <img src="/client/static/images/logo-sid.svg" alt="logo">
+
+            <!------------------     Form    ------------------>          
+            <div class="form" id="form">
+                <h3>Login</h3>
+
+                <form>
+                    <label for="email">Email:</label><br><br>
+                    <input type="text" id="email" name="email"><br><br>
+
+                    <label for="password">Password:</label><br><br>
+                    <input type="password" id="password" name="password"><br><br>
+
+                    <input type="submit" value="Login" id="login-submit">
+                </form>
+            </div>
+        </main>
+
+        <!------------------     Javascript    ------------------>
+        <script type="text/javascript" src="/client/scripts/login.js"></script> 
+    </body>
+</html>
