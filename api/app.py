@@ -182,7 +182,7 @@ def allRecords():
                 "patientID": patientID
             }
             
-            if isupGrade > 3:
+            if isupGrade > 2:
                 messageBody = "The cell uploaded is cancerous! Here's some further information:\n\n"
                 messageBody = messageBody + "Patient ID: " + patientID + "\n"
                 messageBody = messageBody + "ISUP Grade: " + str(isupGrade) + "\n"
@@ -192,7 +192,7 @@ def allRecords():
                 with app.app_context():
                     msg = Message(subject="Alert: Cancerous Cell Detected",
                                 sender=app.config.get("MAIL_USERNAME"),
-                                recipients=["marayeanderson@gmail.com"],
+                                recipients=["kymanianderson99@gmail.com"],
                                 body= messageBody)
                     mail.send(msg)
 

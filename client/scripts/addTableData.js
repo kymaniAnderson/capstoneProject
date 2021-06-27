@@ -117,14 +117,12 @@ document.getElementById("back").addEventListener("click", function(event){
 });
 
 document.getElementById("submit").addEventListener("click", function(event){
-    let patientID = document.getElementById("patientID").value;
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
     let patientAge = document.getElementById("patientAge").value;
 
     jsonBody = {};
     
-    if (patientID !== "") jsonBody["patientID"] = patientID;
     if (firstName !== "") jsonBody["firstName"] = firstName;
     if (lastName !== "") jsonBody["lastName"] = lastName;
     if (patientAge !== "") jsonBody["patientAge"] = patientAge;
