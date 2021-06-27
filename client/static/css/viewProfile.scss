@@ -28,13 +28,14 @@ main{
         }
     }
 
+    /*********************** Cards ***********************/
     .container{
         margin-top: $margin-med;
         padding: 0;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
-
+        
         .card-body{
             background: map-get($colors-background , secondary);
             border-radius: 5px;
@@ -80,5 +81,51 @@ main{
             }
         }
 
+    }
+     
+    /*********************** Preview Window ***********************/
+    .popup-view{
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 525px;
+        height: 585px;
+        border-radius: 5px;
+        padding: $padding-lrg;
+        justify-content: center;
+        background-color: map-get($colors-background, secondary);
+        box-shadow: 0px 6px 18px 0px #000000D9;
+        display: hidden;
+        opacity: 0;
+        transition: 0.5s;
+
+        .back-btn{
+            cursor: pointer;
+            font-weight: 700;
+            font-size: map-get($size-text, lrg);
+        }
+        .back-btn:hover{
+            color: map-get($colors-text, cat-accent3);
+        }
+
+        img{
+            width: 525px;
+            height: 525px;
+            object-fit: contain;
+        }
+    }
+
+    .popup-view#popup.active{
+        top: 50%;
+        visibility: visible;
+        opacity: 1;
+        transition: 0.5s;
+    }
+
+    .main#blur.active{
+        filter: blur(20px);
+        pointer-events: none;
+        user-select: none;
     }
 }

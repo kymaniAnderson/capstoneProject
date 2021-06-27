@@ -2,9 +2,12 @@
 var connectionURL = "http://192.168.100.78:5000"
 
 function createRecordCard(record){
+    var path = connectionURL.concat("/file/").concat(record.imageLink);
+
     //START: Card Body as DIV:
     var recordCardDiv = document.createElement("DIV");
     recordCardDiv.classList.add("card-body");
+    recordCardDiv.setAttribute("onclick", "togglePreview('".concat(path).concat("')"));
 
     //START: Card Content as DIV:
     var recordCardContent = document.createElement("DIV");
@@ -62,7 +65,7 @@ function createRecordCard(record){
     recordCardImg.classList.add("card-image");
 
     var recordImg = document.createElement("IMG");
-    recordImg.setAttribute("src", connectionURL.concat("/file/").concat(record.imageLink));
+    recordImg.setAttribute("src", path);
     recordImg.setAttribute("alt", "prostate cell");
 
     //STOP: Card Image as DIV:
@@ -107,6 +110,24 @@ async function createPageContent(id){
         }
     });
 }
+
+function togglePreview(path){
+    var blur = document.getElementById("blur");
+    blur.classList.toggle("active");
+    var popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+
+    var recordImg = document.createElement("IMG");
+    recordImg.setAttribute("src", path);
+    recordImg.setAttribute("alt", "prostate cell");
+
+    var previewWindow = document.querySelector(".image");
+    previewWindow.append(recordImg);
+}
+
+document.getElementById("back").addEventListener("click", function(event){
+    window.location.reload();
+});
 
 window.onload = function() {
     id = sessionStorage.getItem("patientID");

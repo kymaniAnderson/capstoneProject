@@ -79,30 +79,40 @@
 
         <!------------------    Main Content    ------------------> 
         <main>
-            <!------------------    Heading    ------------------> 
-            <div class="heading">
-                <h3>
-                    <span id="lastName">
-                        LAST
-                    </span>
-                    <span>,&nbsp;</span>
-                    <span id="firstName">
-                        First
-                    </span>
-                </h3>
-    
-                <h4>
-                    <span>
-                        Age:&nbsp; 
-                    </span>
-                    <span id="patientAge">
-                        00
-                    </span>
-                </h4>
-            </div>
+            <div class="main" id="blur">
+                <!------------------    Heading    ------------------> 
+                <div class="heading">
+                    <h3>
+                        <span id="lastName">
+                            LAST
+                        </span>
+                        <span>,&nbsp;</span>
+                        <span id="firstName">
+                            First
+                        </span>
+                    </h3>
+        
+                    <h4>
+                        <span>
+                            Age:&nbsp; 
+                        </span>
+                        <span id="patientAge">
+                            00
+                        </span>
+                    </h4>
+                </div>
 
-            <!------------------     Cards    ------------------>
-            <div class="container"> </div>
+                <!------------------     Cards    ------------------>
+                <div class="container"> </div>
+            </div>
+                <!------------------     Preview Window    ------------------>
+                <div class="popup-view" id="popup">
+                    <a class="back-btn" id="back">
+                        <i class="fas fa-arrow-left"></i><br><br>
+                    </a>
+
+                    <div class="image"></div>
+                </div>
         </main>
 
         <!------------------     Javascript    ------------------>
