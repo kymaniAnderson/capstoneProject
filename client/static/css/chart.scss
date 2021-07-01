@@ -1,0 +1,49 @@
+@import "base.scss"; 
+
+main{
+    overflow: scroll;
+}
+
+.chart-title{
+    margin-left: $margin-sml;
+    margin-right: $margin-sml;
+    margin-top: $margin-med;
+    padding: 0;
+
+    h3{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding-top: $padding-med;
+        padding-bottom: $padding-med;
+        background-color: map-get($colors-background, acc-main);
+        border: 5px;
+        color: map-get($colors-text, norm-secondary);
+        font-size: map-get($size-text, lrg);
+        font-weight: 700;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.chart-body{
+    margin-left: $margin-sml;
+    margin-right: $margin-sml;
+    margin-top: $margin-sml;
+    padding: 0;
+   
+    canvas{
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: $margin-med;
+        width: 100%;
+        background-color: map-get($colors-background, primary);
+        border: 5px;
+        color: map-get($colors-text, norm-secondary);
+        font-size: map-get($size-text, lrg);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

@@ -107,7 +107,7 @@ def allPatients():
             jsonBody = {
                 "firstName": firstName,
                 "lastName": lastName,
-                "patientAge": patientAge,
+                "patientAge": int(patientAge),
                 "patientID": patientID
             }
 
